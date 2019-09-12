@@ -1,7 +1,7 @@
 const Mongoose = require("mongoose");
 
-
-Mongoose.connect("mongodb://165.22.221.50/Api",{ useNewUrlParser: true, useUnifiedTopology: true  });
+let DB_URL="mongodb://165.22.221.50/Api"
+Mongoose.connect(DB_URL,{ useNewUrlParser: true, useUnifiedTopology: true  });
 
 var db = Mongoose.connection;
 
