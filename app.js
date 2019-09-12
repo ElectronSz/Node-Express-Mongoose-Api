@@ -3,7 +3,6 @@ const app = require('./express/index.js')
 const db = require('./config/db.js')
 
 const PORT = 3000 || 5000
-const SERVER_URL = '127.0.0.1'
 
 //connect to mongodb[failed]
 db.on('error', function() {
