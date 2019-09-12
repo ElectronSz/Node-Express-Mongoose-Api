@@ -2,14 +2,10 @@ var express = require('express')
 var router = express.Router()
 const llg = require("llg").llg
 
+// import or require the user model
 const UserModel = require('../models/user.js')
 
-
-// define the home page route
-// router.get('/', function (req, res) {
-//     res.send([{'status': '200 Ok', 'message': "Api working fine..."}])
-// })
-// define the about route
+// define user home
 router.get('/', async function (req, res) {
     try {
         var result = await UserModel.find().exec();
@@ -21,6 +17,7 @@ router.get('/', async function (req, res) {
 
 })
 
+// define user post route
 router.post("/", async (req, res) => {
     try {
         var user = new UserModel(req.body);
@@ -32,6 +29,7 @@ router.post("/", async (req, res) => {
     }
 })
 
+// define get user by id route
 router.get("/:id", async (req, res) => {
     try {
         // let { id } = req.params
@@ -44,6 +42,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+// define get user by username route
 router.get("/username/:data", async (req, res) => {
     try {
         let { data } = req.params
@@ -56,6 +55,7 @@ router.get("/username/:data", async (req, res) => {
     }
 });
 
+// define get user by email route
 router.get("/email/:data", async (req, res) => {
     try {
         let { data } = req.params
@@ -68,7 +68,7 @@ router.get("/email/:data", async (req, res) => {
     }
 });
 
-
+// define update user by id route
 router.put("/:id", async (req, res) => {
     try {
         var user = await UserModel.findById({ _id: req.params.id }).exec();
@@ -81,6 +81,7 @@ router.put("/:id", async (req, res) => {
     }
 });
 
+// define delete user by id route
 router.delete("/:id", async (req, res) => {
     try {
         var result = await UserModel.deleteOne({ _id: req.params.id }).exec();
@@ -90,5 +91,5 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-
+//export user route
 module.exports = router
