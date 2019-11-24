@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
     try {
         var user = new UserModel(req.body);
         var result = await user.save();
-        llg(result, "Added user");
+        llg(result, "Added new user");
         res.send(result);
     } catch (error) {
         res.status(500).send(error);
