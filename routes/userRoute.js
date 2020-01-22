@@ -2,6 +2,8 @@ var express = require('express')
 var router = express.Router()
 const llg = require("llg").llg
 
+const { db } = require('../config')
+
 // import or require the user model
 const UserModel = require('../models/user.js')
 

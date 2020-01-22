@@ -33,7 +33,10 @@ const UserSchema = new Mongoose.Schema({
         required: false,
         max: 100
     },
-
+    fullname: {
+        type: String,
+        max: 300
+    },
     bio: {
         type: String,
         required: false,
@@ -45,18 +48,20 @@ const UserSchema = new Mongoose.Schema({
         required: false,
         max: 255
     }
-}, {timestamps: true});
+}, { timestamps: true });
 
 
-UserSchema.pre('save',  function(next) {
+UserSchema.pre('save', function (next) {
     const user = this;
+
+    this.fullname = this.fname + " " + this.lname;
 
     if (!user.isModified('password')) return next();
 
-    bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.genSalt(10, function (err, salt) {
         if (err) return next(err);
 
-        bcrypt.hash(user.password, salt, function(err, hash) {
+        bcrypt.hash(user.password, salt, function (err, hash) {
             if (err) return next(err);
 
             user.password = hash;
@@ -65,11 +70,11 @@ UserSchema.pre('save',  function(next) {
     });
 });
 
-UserSchema.methods.comparePassword = function(password) {
+UserSchema.methods.comparePassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 };
 
-UserSchema.methods.generateJWT = function() {
+UserSchema.methods.generateJWT = function () {
     const today = new Date();
     const expirationDate = new Date(today);
     expirationDate.setDate(today.getDate() + 60);
