@@ -3,15 +3,12 @@ require('dotenv').config()
 const Mongoose = require("mongoose");
 
 const options = {
-    user: process.env.DB_USER,
-    pass: process.env.DB_PASS,
     keepAlive: process.env.KEEP_ALIVE,
-    keepAliveInitialDelay: process.env.KEEP_ALIVE_DELAY,
     useNewUrlParser: process.env.NEW_URL_PARSER,
     useUnifiedTopology: process.env.USE_UNIFIED_TOPOLOGY
 };
 //connect to mongodb online
-Mongoose.connect(process.env.DB_URL_REMOTE,options);
+Mongoose.connect("mongodb+srv://api:Dlaminilqn2@api-rib0y.gcp.mongodb.net/Api?retryWrites=true&w=majority", options);
 
 var db = Mongoose.connection;
 
