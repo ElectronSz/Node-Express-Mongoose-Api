@@ -16,7 +16,7 @@
     "firebase": "^7.7.0",
     "jsonwebtoken": "^8.5.1",
     "llg": "^1.2.1",
-    "mongoose": "^5.8.9",
+    "mongoose": "^5.11.7",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"
