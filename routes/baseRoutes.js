@@ -4,25 +4,25 @@ var router = express.Router()
 const { auth, db } = require('../config')
 
 
-// router.post('/', async function (req, res) {
+router.post('/', async function (req, res) {
 
 
-//     let { email, password } = req.body
-//     try {
-//         auth.createUserWithEmailAndPassword(email, password)
-//             .then(function (response) {
-//                 res.send(response);
-//             })
-//             .catch(function (error) {
-//                 res.send(error);
-//             });
+    let { email, password } = req.body
+    try {
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(function (response) {
+                res.send(response);
+            })
+            .catch(function (error) {
+                res.send(error);
+            });
 
         
-//     } catch (error) {
-//         res.status(500).send(error);
-//     }
+    } catch (error) {
+        res.status(500).send(error);
+    }
 
-// })
+})
 
 
 // router.post('/', async function (req, res) {
