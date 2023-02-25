@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const Mongoose = require("mongoose");
 
@@ -13,4 +13,4 @@ Mongoose.connect("mongodb+srv://api:Dlaminilqn2@api-rib0y.gcp.mongodb.net/Api?re
 var db = Mongoose.connection;
 
 //export db for global state
-module.exports = db
+module.exports = db;
