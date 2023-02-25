@@ -8,7 +8,7 @@ const options = {
     useUnifiedTopology: process.env.USE_UNIFIED_TOPOLOGY
 };
 //connect to mongodb online
-Mongoose.connect("mongodb+srv://api:Dlaminilqn2@api-rib0y.gcp.mongodb.net/Api?retryWrites=true&w=majority", options);
+Mongoose.connect(process.env.MONGO_URL, options);
 
 var db = Mongoose.connection;
 
